@@ -10,33 +10,40 @@ namespace LeetcodeSum.ArrayQ
     {
         public int FirstMissingPositive(int[] nums)
         {
-            //int max = nums.Max();
-            //int min = nums.Min();
-            //int diff = max - min;
-            //if (diff == 0)
-            //    return (min >= 2 ? 1 : 2);
-            //else
-            //{
-            //    if (max < 1)
-            //        return 1;
-            //    else
-            //    {
-            //        int minIndex = 0;
-            //        Array.Sort(nums);
-            //        if (min < 1)
-            //        {
-            //            min = 0;
-            //            Math.sum
-            //        }
-            //        else
-            //        {
+            if (nums.Count() == 0)
+                return 0;
+            else
+            {
+                HashSet<int> hs = new HashSet<int>();
+                for(int i=0; i<nums.Length;i++)
+                {
+                    if (nums[i] > 0)
+                    {
+                        hs.Add(nums[i]);
+                    }
+                }
+                int max = hs.Max();
+                int min = hs.Min();
+                if (min != 1)
+                    return 1;
+                else
+                {
+                    int temp = 1;             
+                    while (temp <= max)
+                    {
+                        if (!hs.Contains(temp))
+                        {  
+                             return temp;
+                        }
+                        if (temp == max)
+                            return ++temp;
+                        temp++;
+                        
+                    }
+                }
+                return 0;
 
-            //        }
-
-
-            //    }
-            //}
-            return 0;
+            }
         }
 
     }

@@ -12,9 +12,11 @@ namespace LeetcodeSum
     {
         static void Main(string[] args)
         {
-            string s = "ljsdfjsdfjlaf";
-            A344 a = new A344();
-            string t = a.ReverseString(s);
+            //string s = "ljsdfjsdfjlaf";
+            //A344 a = new A344();
+            int[] i = { 7 };
+            A41 a = new A41();
+            int t = a.FirstMissingPositive(i);
             Console.WriteLine(t);
             Console.ReadLine();
         }
