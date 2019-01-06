@@ -15,13 +15,41 @@ namespace LeetcodeSum.ArrayQ
                 return null;
             else
             {
-                Dictionary<char, int> dtGuess = new Dictionary<char, int>();
+                Dictionary<int, char> dtGuess = new Dictionary<int, char>();
                 for (int i = 0; i < guess.Length; i++)
                 {
-                    dtGuess.Add(guess[i], i);
+                    dtGuess.Add(i, guess[i]);
                 }
 
-                return "hello";
+                Dictionary<int, char> dtSecret = new Dictionary<int, char>();
+                for (int j = 0; j < secret.Length; j++)
+                {
+                    dtSecret.Add(j, secret[j]);
+                }
+                              
+
+                int bull = 0;
+                int cow = 0;
+                for(int a=0; a<guess.Length; a++)
+                {
+                    if(dtSecret[a]==guess[a])
+                    {
+                        bull++;                       
+                        dtSecret.Remove(a);
+                        dtGuess.Remove(a);
+                    }
+                }
+
+               for(int t=0; t<guess.Length; t++)
+                {
+                    if(dtSecret.ContainsValue(guess[t]) && dtGuess.ContainsValue(guess[t]))
+                    {                        
+                        cow++;
+                        dtSecret.Remove(dtSecret.FirstOrDefault(x => x.Value == guess[t]).Key);
+                        dtGuess.Remove(dtGuess.FirstOrDefault(x => x.Value == guess[t]).Key);
+                    }
+                }
+                return bull + "A" + cow + "B";
 
             }
         }

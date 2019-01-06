@@ -12,11 +12,12 @@ namespace LeetcodeSum
     {
         static void Main(string[] args)
         {
-            //string s = "ljsdfjsdfjlaf";
-            //A344 a = new A344();
-            int[] i = { 7 };
-            A41 a = new A41();
-            int t = a.FirstMissingPositive(i);
+            string secret = "11";
+            string guess = "10";
+
+            
+            A299 a = new A299();
+            string t = a.GetHint(secret, guess);
             Console.WriteLine(t);
             Console.ReadLine();
         }
